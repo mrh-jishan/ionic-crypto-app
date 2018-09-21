@@ -40,15 +40,4 @@ export class CryptoNewsPage {
         if (refresher) refresher.complete();
         this.loading.dismiss();
     }
-
-
-    // author: "Joseph Young"
-    // content: "In seconds, the Bitcoin price has surged from $6,190 to $6,450, by more than 4 percent, after the dominant cryptocurrency remained in the low $6,100 region for more than 24 hours. The sudden increase in the price of Bitcoin on September 9 was not expected by … [+3093 chars]"
-    // description: "In seconds, the Bitcoin price has surged from $6,190 to $6,450, by more than 4 percent, after the dominant cryptocurrency remained in the low $6,100 region for more than 24 hours. The sudden increase in the price of Bitcoin on September 9 was not expected by …"
-    // publishedAt: "2018-09-09T10:40:33Z"
-    // source: {id: "crypto-coins-news", name: "Crypto Coins News"}
-    // title: "Bitcoin Price Surges From $6,190 to $6,450 in Seconds, What’s Next For BTC?"
-    // url: "https://www.ccn.com/bitcoin-price-surges-from-6190-to-6450-in-seconds-whats-next-for-btc/"
-    // urlToImage: "https://www.ccn.com/wp-content/uploads/2018/07/Bitcoin-price-spike-chart.jpg"
-
 }

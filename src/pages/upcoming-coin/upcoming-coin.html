@@ -8,17 +8,50 @@
 </ion-header>
 
 <ion-content>
-    <!--<ion-searchbar [(ngModel)]="searchText" [showCancelButton]="shouldShowCancel" (ionInput)="onInputSearch($event)"-->
-                   <!--(ionCancel)="onCancel($event)">-->
-    <!--</ion-searchbar>-->
-    <!--<ion-refresher (ionRefresh)="loadCoin($event)">-->
-        <!--<ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"-->
-                               <!--refreshingText="Refreshing...">-->
-        <!--</ion-refresher-content>-->
-    <!--</ion-refresher>-->
-    <!--<ion-list [virtualScroll]="coinListFiltered">-->
-        <!--<ion-grid class='coin-card' *virtualItem="let coin">-->
-            <!--<coin-card [coinData]='coin'></coin-card>-->
-        <!--</ion-grid>-->
-    <!--</ion-list>-->
+
+    <ion-refresher (ionRefresh)="loadCoin($event)">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+                               refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <ion-list [virtualScroll]="coinList">
+        <ion-grid class='coin-card' *virtualItem="let coin">
+
+            <ion-row>
+                <ion-col col-4 class='vertical-center'>
+                    <img src="{{coin.image}}" width="160">
+                </ion-col>
+                <ion-col col-8>
+                    <ion-row>
+                        <ion-col>
+                            <span class='bold'>Name: </span>
+                            <span>{{ coin.name }}</span>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <span class='bold'>Description: </span>
+                            <span>{{ coin.description }}</span>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <span class="bold">Start Time: </span>
+                            <span>{{ coin.start_time | date }}</span>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col>
+                            <span class="bold">End Time: </span>
+                            <span>{{ coin.end_time | date }}</span>
+                        </ion-col>
+                    </ion-row>
+
+
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-list>
 </ion-content>

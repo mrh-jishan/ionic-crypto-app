@@ -25760,6 +25760,10 @@ coin-card .duration {
   font-weight: bold;
 }
 
+.coin-card:hover {
+  background: aliceblue;
+}
+
 page-crypto-news .coin-card {
   padding: 5%;
   width: 100%;
@@ -25768,10 +25772,26 @@ page-crypto-news .coin-card {
   border-bottom-width: 2px;
 }
 
+page-crypto-news .coin-card:hover {
+  background: aliceblue;
+}
+
 page-home .coin-card {
   padding: 5%;
   width: 100%;
   border-bottom-style: solid;
   border-bottom-color: #d0d0d0;
   border-bottom-width: 2px;
+}
+
+page-upcoming-coin .coin-card {
+  padding: 5%;
+  width: 100%;
+  border-bottom-style: solid;
+  border-bottom-color: #d0d0d0;
+  border-bottom-width: 2px;
+}
+
+page-upcoming-coin .coin-card:hover {
+  background: aliceblue;
 }

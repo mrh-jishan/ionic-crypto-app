@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, LoadingController} from 'ionic-angular';
+import {CoinProvider} from "../../providers/providers";
 
 /**
  * Generated class for the UpcomingCoinPage page.
@@ -10,16 +11,33 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-upcoming-coin',
-  templateUrl: 'upcoming-coin.html',
+    selector: 'page-upcoming-coin',
+    templateUrl: 'upcoming-coin.html',
 })
 export class UpcomingCoinPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+    private coinList: any = [];
+    private loading: any;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad UpcomingCoinPage');
-  }
+    constructor(
+        private coinProvider: CoinProvider,
+        private loadingCtrl: LoadingController) {
+        this.loadCoin();
+    }
 
+    private initLoading() {
+        this.loading = this.loadingCtrl.create({
+            content: 'Please wait...'
+        });
+    }
+
+    private async loadCoin(refresher?) {
+        this.initLoading();
+        await this.loading.present();
+        await this.coinProvider.getUpcomingCoin().then((res: any) => {
+            this.coinList = res.ico.upcoming;
+        });
+        if (refresher) refresher.complete();
+        this.loading.dismiss();
+    }
 }
