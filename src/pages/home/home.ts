@@ -65,7 +65,15 @@ export class HomePage {
         });
 
         await favorites.push(coin);
-        await this.storage.set('myFavourite', favorites);
 
+
+        await this.storage.set('myFavourite', this.removeDuplicates(favorites,'id'));
+
+    }
+
+    removeDuplicates(myArr, prop) {
+        return myArr.filter((obj, pos, arr) => {
+            return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
+        });
     }
 }

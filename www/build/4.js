@@ -165,12 +165,17 @@ var HomePage = /** @class */ (function () {
                         return [4 /*yield*/, favorites.push(coin)];
                     case 2:
                         _a.sent();
-                        return [4 /*yield*/, this.storage.set('myFavourite', favorites)];
+                        return [4 /*yield*/, this.storage.set('myFavourite', this.removeDuplicates(favorites, 'id'))];
                     case 3:
                         _a.sent();
                         return [2 /*return*/];
                 }
             });
+        });
+    };
+    HomePage.prototype.removeDuplicates = function (myArr, prop) {
+        return myArr.filter(function (obj, pos, arr) {
+            return arr.map(function (mapObj) { return mapObj[prop]; }).indexOf(obj[prop]) === pos;
         });
     };
     HomePage = __decorate([
