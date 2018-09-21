@@ -25760,6 +25760,14 @@ coin-card .duration {
   font-weight: bold;
 }
 
+page-crypto-news .coin-card {
+  padding: 5%;
+  width: 100%;
+  border-bottom-style: solid;
+  border-bottom-color: #d0d0d0;
+  border-bottom-width: 2px;
+}
+
 page-home .coin-card {
   padding: 5%;
   width: 100%;

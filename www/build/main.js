@@ -360,6 +360,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoinProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_api__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(157);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -371,18 +372,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var CoinProvider = /** @class */ (function () {
-    function CoinProvider(api) {
+    function CoinProvider(api, http) {
         this.api = api;
+        this.http = http;
     }
     CoinProvider.prototype.getAllCoin = function () {
         return this.api.get('ticker/?convert=EUR').toPromise();
     };
+    CoinProvider.prototype.getUpcomingCoin = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.http.get('https://api.icowatchlist.com/public/v1/upcoming').subscribe(function (res) {
+                resolve(res);
+            }, function (err) {
+                reject(err);
+            });
+        });
+    };
+    CoinProvider.prototype.getCrytptoNews = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.http.get('https://newsapi.org/v2/everything?sources=crypto-coins-news&apiKey=d08830add58541029ba1c12de6597ee3&page=4&pageSize=100').subscribe(function (res) {
+                resolve(res);
+            }, function (err) {
+                reject(err);
+            });
+        });
+    };
     CoinProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__api_api__["a" /* Api */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__api_api__["a" /* Api */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__api_api__["a" /* Api */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object])
     ], CoinProvider);
     return CoinProvider;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=coinmarketcap.provider.js.map
