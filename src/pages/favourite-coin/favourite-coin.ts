@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, LoadingController} from 'ionic-angular';
+import {IonicPage, LoadingController, ToastController} from 'ionic-angular';
 import {CoinProvider, SettingsProvider} from "../../providers/providers";
 import {Storage} from "@ionic/storage";
 import {ImageHelper} from "../../helper/image.helper";
@@ -29,6 +29,7 @@ export class FavouriteCoinPage {
         private imageHelper: ImageHelper,
         private priceHelper: PriceHelper,
         private settingsProvider: SettingsProvider,
+        public toastCtrl: ToastController,
         public storage: Storage) {
         this.loadCoin();
         this.getSymbol();
@@ -69,4 +70,30 @@ export class FavouriteCoinPage {
         }
     }
 
+
+    async removeFavourite(coin) {
+        var favorites = [];
+        await this.storage.get('myFavourite').then(res => {
+            if (res == null) {
+                favorites = [];
+            } else {
+                favorites = res.filter((element) => {
+                    return element.id !== coin.id;
+                });
+            }
+        });
+
+        await this.storage.set('myFavourite', favorites);
+        this.loadCoin();
+        this.presentToast();
+
+    }
+
+    presentToast() {
+        const toast = this.toastCtrl.create({
+            message: 'coin was removed successfully',
+            duration: 3000
+        });
+        toast.present();
+    }
 }

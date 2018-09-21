@@ -15,7 +15,7 @@
     </ion-refresher>
 
     <ion-list [virtualScroll]="coinList">
-        <ion-grid class='coin-card' *virtualItem="let coinData">
+        <ion-grid class='coin-card' *virtualItem="let coinData" (click)="removeFavourite(coinData)">
             <ion-row>
                 <ion-col col-2>
                     <img src="{{imageHelper.getCoinImage(coinData.symbol)}}" height="32" width="32">

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, LoadingController} from 'ionic-angular';
 import {CoinProvider} from "../../providers/providers";
+import {InAppBrowser} from "@ionic-native/in-app-browser";
 
 /**
  * Generated class for the CryptoNewsPage page.
@@ -21,6 +22,7 @@ export class CryptoNewsPage {
 
     constructor(
         private coinProvider: CoinProvider,
+        private iab: InAppBrowser,
         private loadingCtrl: LoadingController) {
         this.loadCoin();
     }
@@ -39,5 +41,9 @@ export class CryptoNewsPage {
         });
         if (refresher) refresher.complete();
         this.loading.dismiss();
+    }
+
+    openInBrowser(coin) {
+        this.iab.create(coin.url);
     }
 }

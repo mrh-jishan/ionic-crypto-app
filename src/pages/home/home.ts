@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, LoadingController} from 'ionic-angular';
+import {IonicPage, LoadingController, ToastController} from 'ionic-angular';
 import {CoinProvider} from '../../providers/providers';
 import {Storage} from "@ionic/storage";
 
@@ -16,6 +16,7 @@ export class HomePage {
 
     constructor(private coinProvider: CoinProvider,
                 private loadingCtrl: LoadingController,
+                public toastCtrl: ToastController,
                 public storage: Storage) {
         this.loadCoin();
     }
@@ -67,7 +68,8 @@ export class HomePage {
         await favorites.push(coin);
 
 
-        await this.storage.set('myFavourite', this.removeDuplicates(favorites,'id'));
+        await this.storage.set('myFavourite', this.removeDuplicates(favorites, 'id'));
+        this.presentToast();
 
     }
 
@@ -75,5 +77,13 @@ export class HomePage {
         return myArr.filter((obj, pos, arr) => {
             return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
         });
+    }
+
+    presentToast() {
+        const toast = this.toastCtrl.create({
+            message: 'coin was added successfully',
+            duration: 3000
+        });
+        toast.present();
     }
 }

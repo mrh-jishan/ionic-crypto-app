@@ -16,7 +16,7 @@
     </ion-refresher>
 
     <ion-list [virtualScroll]="coinList">
-        <ion-grid class='coin-card' *virtualItem="let coin">
+        <ion-grid class='coin-card' *virtualItem="let coin" (click)="openInBrowser(coin)">
 
             <ion-row>
                 <ion-col col-2 class='vertical-center'>

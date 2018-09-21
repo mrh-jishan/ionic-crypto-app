@@ -8,14 +8,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UpcomingCoinPageModule", function() { return UpcomingCoinPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__upcoming_coin__ = __webpack_require__(700);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__upcoming_coin__ = __webpack_require__(701);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_in_app_browser__ = __webpack_require__(694);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -31,7 +33,9 @@ var UpcomingCoinPageModule = /** @class */ (function () {
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__upcoming_coin__["a" /* UpcomingCoinPage */]),
                 __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* ComponentsModule */]
-            ],
+            ], providers: [
+                __WEBPACK_IMPORTED_MODULE_4__ionic_native_in_app_browser__["a" /* InAppBrowser */]
+            ]
         })
     ], UpcomingCoinPageModule);
     return UpcomingCoinPageModule;
@@ -41,7 +45,319 @@ var UpcomingCoinPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 700:
+/***/ 694:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export InAppBrowserObject */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InAppBrowser; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_core__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * @hidden
+ */
+var InAppBrowserObject = (function () {
+    /**
+     * Opens a URL in a new InAppBrowser instance, the current browser instance, or the system browser.
+     * @param {string} url     The URL to load.
+     * @param {string} [target="self"]  The target in which to load the URL, an optional parameter that defaults to _self.
+     *                 _self: Opens in the WebView if the URL is in the white list, otherwise it opens in the InAppBrowser.
+     *                 _blank: Opens in the InAppBrowser.
+     *                 _system: Opens in the system's web browser.
+     * @param {string | InAppBrowserOptions} [options] Options for the InAppBrowser. Optional, defaulting to: location=yes.
+     *                 The options string must not contain any blank space, and each feature's
+     *                 name/value pairs must be separated by a comma. Feature names are case insensitive.
+     */
+    function InAppBrowserObject(url, target, options) {
+        try {
+            if (options && typeof options !== 'string') {
+                options = Object.keys(options)
+                    .map(function (key) { return key + "=" + options[key]; })
+                    .join(',');
+            }
+            this._objectInstance = cordova.InAppBrowser.open(url, target, options);
+        }
+        catch (e) {
+            window.open(url, target);
+            console.warn('Native: InAppBrowser is not installed or you are running on a browser. Falling back to window.open.');
+        }
+    }
+    /**
+     * Displays an InAppBrowser window that was opened hidden. Calling this has no effect
+     * if the InAppBrowser was already visible.
+     */
+    /**
+       * Displays an InAppBrowser window that was opened hidden. Calling this has no effect
+       * if the InAppBrowser was already visible.
+       */
+    InAppBrowserObject.prototype.show = /**
+       * Displays an InAppBrowser window that was opened hidden. Calling this has no effect
+       * if the InAppBrowser was already visible.
+       */
+    function () { };
+    /**
+     * Closes the InAppBrowser window.
+     */
+    /**
+       * Closes the InAppBrowser window.
+       */
+    InAppBrowserObject.prototype.close = /**
+       * Closes the InAppBrowser window.
+       */
+    function () { };
+    /**
+     * Hides an InAppBrowser window that is currently shown. Calling this has no effect
+     * if the InAppBrowser was already hidden.
+     */
+    /**
+       * Hides an InAppBrowser window that is currently shown. Calling this has no effect
+       * if the InAppBrowser was already hidden.
+       */
+    InAppBrowserObject.prototype.hide = /**
+       * Hides an InAppBrowser window that is currently shown. Calling this has no effect
+       * if the InAppBrowser was already hidden.
+       */
+    function () { };
+    /**
+     * Injects JavaScript code into the InAppBrowser window.
+     * @param script {Object} Details of the script to run, specifying either a file or code key.
+     * @returns {Promise<any>}
+     */
+    /**
+       * Injects JavaScript code into the InAppBrowser window.
+       * @param script {Object} Details of the script to run, specifying either a file or code key.
+       * @returns {Promise<any>}
+       */
+    InAppBrowserObject.prototype.executeScript = /**
+       * Injects JavaScript code into the InAppBrowser window.
+       * @param script {Object} Details of the script to run, specifying either a file or code key.
+       * @returns {Promise<any>}
+       */
+    function (script) {
+        return;
+    };
+    /**
+     * Injects CSS into the InAppBrowser window.
+     * @param css {Object} Details of the script to run, specifying either a file or code key.
+     * @returns {Promise<any>}
+     */
+    /**
+       * Injects CSS into the InAppBrowser window.
+       * @param css {Object} Details of the script to run, specifying either a file or code key.
+       * @returns {Promise<any>}
+       */
+    InAppBrowserObject.prototype.insertCSS = /**
+       * Injects CSS into the InAppBrowser window.
+       * @param css {Object} Details of the script to run, specifying either a file or code key.
+       * @returns {Promise<any>}
+       */
+    function (css) {
+        return;
+    };
+    /**
+     * A method that allows you to listen to events happening in the browser.
+     * @param event {string} Name of the event
+     * @returns {Observable<InAppBrowserEvent>} Returns back an observable that will listen to the event on subscribe, and will stop listening to the event on unsubscribe.
+     */
+    /**
+       * A method that allows you to listen to events happening in the browser.
+       * @param event {string} Name of the event
+       * @returns {Observable<InAppBrowserEvent>} Returns back an observable that will listen to the event on subscribe, and will stop listening to the event on unsubscribe.
+       */
+    InAppBrowserObject.prototype.on = /**
+       * A method that allows you to listen to events happening in the browser.
+       * @param event {string} Name of the event
+       * @returns {Observable<InAppBrowserEvent>} Returns back an observable that will listen to the event on subscribe, and will stop listening to the event on unsubscribe.
+       */
+    function (event) {
+        var _this = this;
+        return new __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"](function (observer) {
+            _this._objectInstance.addEventListener(event, observer.next.bind(observer));
+            return function () {
+                return _this._objectInstance.removeEventListener(event, observer.next.bind(observer));
+            };
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["b" /* CordovaInstance */])({ sync: true }),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
+    ], InAppBrowserObject.prototype, "show", null);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["b" /* CordovaInstance */])({ sync: true }),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
+    ], InAppBrowserObject.prototype, "close", null);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["b" /* CordovaInstance */])({ sync: true }),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
+    ], InAppBrowserObject.prototype, "hide", null);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["b" /* CordovaInstance */])(),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], InAppBrowserObject.prototype, "executeScript", null);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["b" /* CordovaInstance */])(),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], InAppBrowserObject.prototype, "insertCSS", null);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["d" /* InstanceCheck */])(),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [String]),
+        __metadata("design:returntype", __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"])
+    ], InAppBrowserObject.prototype, "on", null);
+    return InAppBrowserObject;
+}());
+
+/**
+ * @name In App Browser
+ * @description Launches in app Browser
+ * @usage
+ * ```typescript
+ * import { InAppBrowser } from '@ionic-native/in-app-browser';
+ *
+ * constructor(private iab: InAppBrowser) { }
+ *
+ *
+ * ...
+ *
+ *
+ * const browser = this.iab.create('https://ionicframework.com/');
+ *
+ * browser.executeScript(...);
+ *
+ * browser.insertCSS(...);
+ * browser.on('loadstop').subscribe(event => {
+ *    browser.insertCSS({ code: "body{color: red;" });
+ * });
+ *
+ * browser.close();
+ *
+ * ```
+ * @classes
+ * InAppBrowserObject
+ * @interfaces
+ * InAppBrowserEvent
+ * InAppBrowserOptions
+ */
+var InAppBrowser = (function (_super) {
+    __extends(InAppBrowser, _super);
+    function InAppBrowser() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    /**
+     * Opens a URL in a new InAppBrowser instance, the current browser instance, or the system browser.
+     * @param  url {string}     The URL to load.
+     * @param  target {string}  The target in which to load the URL, an optional parameter that defaults to _self.
+     * @param  options {string} Options for the InAppBrowser. Optional, defaulting to: location=yes.
+     *                 The options string must not contain any blank space, and each feature's
+     *                 name/value pairs must be separated by a comma. Feature names are case insensitive.
+     * @returns {InAppBrowserObject}
+     */
+    /**
+       * Opens a URL in a new InAppBrowser instance, the current browser instance, or the system browser.
+       * @param  url {string}     The URL to load.
+       * @param  target {string}  The target in which to load the URL, an optional parameter that defaults to _self.
+       * @param  options {string} Options for the InAppBrowser. Optional, defaulting to: location=yes.
+       *                 The options string must not contain any blank space, and each feature's
+       *                 name/value pairs must be separated by a comma. Feature names are case insensitive.
+       * @returns {InAppBrowserObject}
+       */
+    InAppBrowser.prototype.create = /**
+       * Opens a URL in a new InAppBrowser instance, the current browser instance, or the system browser.
+       * @param  url {string}     The URL to load.
+       * @param  target {string}  The target in which to load the URL, an optional parameter that defaults to _self.
+       * @param  options {string} Options for the InAppBrowser. Optional, defaulting to: location=yes.
+       *                 The options string must not contain any blank space, and each feature's
+       *                 name/value pairs must be separated by a comma. Feature names are case insensitive.
+       * @returns {InAppBrowserObject}
+       */
+    function (url, target, options) {
+        return new InAppBrowserObject(url, target, options);
+    };
+    InAppBrowser.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */] },
+    ];
+    /**
+     * @name In App Browser
+     * @description Launches in app Browser
+     * @usage
+     * ```typescript
+     * import { InAppBrowser } from '@ionic-native/in-app-browser';
+     *
+     * constructor(private iab: InAppBrowser) { }
+     *
+     *
+     * ...
+     *
+     *
+     * const browser = this.iab.create('https://ionicframework.com/');
+     *
+     * browser.executeScript(...);
+     *
+     * browser.insertCSS(...);
+     * browser.on('loadstop').subscribe(event => {
+     *    browser.insertCSS({ code: "body{color: red;" });
+     * });
+     *
+     * browser.close();
+     *
+     * ```
+     * @classes
+     * InAppBrowserObject
+     * @interfaces
+     * InAppBrowserEvent
+     * InAppBrowserOptions
+     */
+    InAppBrowser = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["f" /* Plugin */])({
+            pluginName: 'InAppBrowser',
+            plugin: 'cordova-plugin-inappbrowser',
+            pluginRef: 'cordova.InAppBrowser',
+            repo: 'https://github.com/apache/cordova-plugin-inappbrowser',
+            platforms: ['AmazonFire OS', 'Android', 'Browser', 'iOS', 'macOS', 'Windows']
+        })
+    ], InAppBrowser);
+    return InAppBrowser;
+}(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["e" /* IonicNativePlugin */]));
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 701:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49,6 +365,7 @@ var UpcomingCoinPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_in_app_browser__ = __webpack_require__(694);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -96,6 +413,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
+
 /**
  * Generated class for the UpcomingCoinPage page.
  *
@@ -103,8 +421,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
  * Ionic pages and navigation.
  */
 var UpcomingCoinPage = /** @class */ (function () {
-    function UpcomingCoinPage(coinProvider, loadingCtrl) {
+    function UpcomingCoinPage(coinProvider, iab, loadingCtrl) {
         this.coinProvider = coinProvider;
+        this.iab = iab;
         this.loadingCtrl = loadingCtrl;
         this.coinList = [];
         this.loadCoin();
@@ -137,11 +456,15 @@ var UpcomingCoinPage = /** @class */ (function () {
             });
         });
     };
+    UpcomingCoinPage.prototype.openInBrowser = function (coin) {
+        this.iab.create(coin.website_link);
+    };
     UpcomingCoinPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-upcoming-coin',template:/*ion-inline-start:"/home/rabiul/ionic-cryptocurrency/src/pages/upcoming-coin/upcoming-coin.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Upcoming-Coin</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n    <ion-refresher (ionRefresh)="loadCoin($event)">\n        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"\n                               refreshingText="Refreshing...">\n        </ion-refresher-content>\n    </ion-refresher>\n\n    <ion-list [virtualScroll]="coinList">\n        <ion-grid class=\'coin-card\' *virtualItem="let coin">\n\n            <ion-row>\n                <ion-col col-4 class=\'vertical-center\'>\n                    <img src="{{coin.image}}" width="160">\n                </ion-col>\n                <ion-col col-8>\n                    <ion-row>\n                        <ion-col>\n                            <span class=\'bold\'>Name: </span>\n                            <span>{{ coin.name }}</span>\n                        </ion-col>\n                    </ion-row>\n                    <ion-row>\n                        <ion-col>\n                            <span class=\'bold\'>Description: </span>\n                            <span>{{ coin.description }}</span>\n                        </ion-col>\n                    </ion-row>\n                    <ion-row>\n                        <ion-col>\n                            <span class="bold">Start Time: </span>\n                            <span>{{ coin.start_time | date }}</span>\n                        </ion-col>\n                    </ion-row>\n\n                    <ion-row>\n                        <ion-col>\n                            <span class="bold">End Time: </span>\n                            <span>{{ coin.end_time | date }}</span>\n                        </ion-col>\n                    </ion-row>\n\n\n                </ion-col>\n            </ion-row>\n        </ion-grid>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/rabiul/ionic-cryptocurrency/src/pages/upcoming-coin/upcoming-coin.html"*/,
+            selector: 'page-upcoming-coin',template:/*ion-inline-start:"/home/rabiul/ionic-cryptocurrency/src/pages/upcoming-coin/upcoming-coin.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Upcoming-Coin</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n    <ion-refresher (ionRefresh)="loadCoin($event)">\n        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"\n                               refreshingText="Refreshing...">\n        </ion-refresher-content>\n    </ion-refresher>\n\n    <ion-list [virtualScroll]="coinList">\n        <ion-grid class=\'coin-card\' *virtualItem="let coin" (click)="openInBrowser(coin)">\n\n            <ion-row>\n                <ion-col col-4 class=\'vertical-center\'>\n                    <img src="{{coin.image}}" width="160">\n                </ion-col>\n                <ion-col col-8>\n                    <ion-row>\n                        <ion-col>\n                            <span class=\'bold\'>Name: </span>\n                            <span>{{ coin.name }}</span>\n                        </ion-col>\n                    </ion-row>\n                    <ion-row>\n                        <ion-col>\n                            <span class=\'bold\'>Description: </span>\n                            <span>{{ coin.description }}</span>\n                        </ion-col>\n                    </ion-row>\n                    <ion-row>\n                        <ion-col>\n                            <span class="bold">Start Time: </span>\n                            <span>{{ coin.start_time | date }}</span>\n                        </ion-col>\n                    </ion-row>\n\n                    <ion-row>\n                        <ion-col>\n                            <span class="bold">End Time: </span>\n                            <span>{{ coin.end_time | date }}</span>\n                        </ion-col>\n                    </ion-row>\n\n\n                </ion-col>\n            </ion-row>\n        </ion-grid>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/rabiul/ionic-cryptocurrency/src/pages/upcoming-coin/upcoming-coin.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CoinProvider */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_native_in_app_browser__["a" /* InAppBrowser */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]])
     ], UpcomingCoinPage);
     return UpcomingCoinPage;
