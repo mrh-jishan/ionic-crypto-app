@@ -44,6 +44,7 @@ var HomePageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(176);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -91,10 +92,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
+
 var HomePage = /** @class */ (function () {
-    function HomePage(coinProvider, loadingCtrl) {
+    function HomePage(coinProvider, loadingCtrl, storage) {
         this.coinProvider = coinProvider;
         this.loadingCtrl = loadingCtrl;
+        this.storage = storage;
         this.coinList = [];
         this.coinListFiltered = [];
         this.loadCoin();
@@ -142,14 +145,42 @@ var HomePage = /** @class */ (function () {
             }
         }
     };
+    HomePage.prototype.addToFavourite = function (coin) {
+        return __awaiter(this, void 0, void 0, function () {
+            var favorites;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        favorites = [];
+                        return [4 /*yield*/, this.storage.get('myFavourite').then(function (res) {
+                                if (res == null) {
+                                    favorites = [];
+                                }
+                                else {
+                                    favorites = res;
+                                }
+                            })];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, favorites.push(coin)];
+                    case 2:
+                        _a.sent();
+                        return [4 /*yield*/, this.storage.set('myFavourite', favorites)];
+                    case 3:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/home/rabiul/ionic-cryptocurrency/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Cryptocurrency</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-searchbar [(ngModel)]="searchText" [showCancelButton]="shouldShowCancel" (ionInput)="onInputSearch($event)" (ionCancel)="onCancel($event)">\n  </ion-searchbar>\n  <ion-refresher (ionRefresh)="loadCoin($event)">\n    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">\n    </ion-refresher-content>\n  </ion-refresher>\n  <ion-list [virtualScroll]="coinListFiltered">\n    <ion-grid class=\'coin-card\' *virtualItem="let coin">\n      <coin-card [coinData]=\'coin\'></coin-card>\n    </ion-grid>\n  </ion-list>\n</ion-content>'/*ion-inline-end:"/home/rabiul/ionic-cryptocurrency/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/home/rabiul/ionic-cryptocurrency/src/pages/home/home.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Cryptocurrency</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <ion-searchbar [(ngModel)]="searchText" [showCancelButton]="shouldShowCancel" (ionInput)="onInputSearch($event)"\n                   (ionCancel)="onCancel($event)">\n    </ion-searchbar>\n    <ion-refresher (ionRefresh)="loadCoin($event)">\n        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"\n                               refreshingText="Refreshing...">\n        </ion-refresher-content>\n    </ion-refresher>\n\n    <ion-list [virtualScroll]="coinListFiltered">\n        <ion-grid class=\'coin-card\' *virtualItem="let coin">\n            <coin-card [coinData]=\'coin\' (click)="addToFavourite(coin)"></coin-card>\n        </ion-grid>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/rabiul/ionic-cryptocurrency/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CoinProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CoinProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CoinProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]) === "function" && _c || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=home.js.map

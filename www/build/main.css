@@ -25776,6 +25776,38 @@ page-crypto-news .coin-card:hover {
   background: aliceblue;
 }
 
+page-favourite-coin .price-down {
+  color: #ff4d4d;
+}
+
+page-favourite-coin .price-up {
+  color: #5faf5f;
+}
+
+page-favourite-coin .price-no-change {
+  color: black;
+}
+
+page-favourite-coin .symbol {
+  font-weight: bold;
+}
+
+page-favourite-coin .duration {
+  font-weight: bold;
+}
+
+page-favourite-coin .coin-card:hover {
+  background: aliceblue;
+}
+
+page-favourite-coin .coin-card {
+  padding: 5%;
+  width: 100%;
+  border-bottom-style: solid;
+  border-bottom-color: #d0d0d0;
+  border-bottom-width: 2px;
+}
+
 page-home .coin-card {
   padding: 5%;
   width: 100%;
