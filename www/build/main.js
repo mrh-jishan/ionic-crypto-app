@@ -813,17 +813,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var ConverterPage = /** @class */ (function () {
+    // price_btc: "1.0"
+    // price_eur: "5698.16695793"
+    // price_usd: "6691.83012073"
     function ConverterPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        console.log(this.navParams.get('data'));
+        this.btcValue = 0;
+        this.usdValue = 0;
+        this.data = this.navParams.get('data');
+        this.btcValue = this.data.price_btc;
+        this.usdValue = this.data.price_usd;
     }
     ConverterPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ConverterPage');
+    };
+    ConverterPage.prototype.BTCChageValue = function (value) {
+        this.usdValue = value * this.data.price_usd;
+    };
+    ConverterPage.prototype.USDChageValue = function (value) {
+        this.btcValue = value / this.data.price_btc;
     };
     ConverterPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-converter',template:/*ion-inline-start:"/home/rabiul/ionic/ionic-cryptocurrency/src/pages/converter/converter.html"*/'<!--\n  Generated template for the ConverterPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>converter</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/home/rabiul/ionic/ionic-cryptocurrency/src/pages/converter/converter.html"*/,
+            selector: 'page-converter',template:/*ion-inline-start:"/home/rabiul/ionic/ionic-cryptocurrency/src/pages/converter/converter.html"*/'<!--\n  Generated template for the ConverterPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Crypto-Converter</ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <ion-list>\n        <ion-item>\n            <ion-label stacked>1 BTC = {{data.price_usd | currency}}</ion-label>\n        </ion-item>\n\n        <ion-item>\n            <ion-label stacked>BTC Amount</ion-label>\n            <ion-input type="text" (input)="BTCChageValue($event.target.value)" [ngModel]="btcValue"></ion-input>\n        </ion-item>\n\n        <ion-item>\n            <ion-label stacked>USD Amount</ion-label>\n            <ion-input type="text" (input)="USDChageValue($event.target.value)" [ngModel]="usdValue"></ion-input>\n        </ion-item>\n\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/rabiul/ionic/ionic-cryptocurrency/src/pages/converter/converter.html"*/,
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object])
     ], ConverterPage);
