@@ -1,15 +1,16 @@
 webpackJsonp([4],{
 
-/***/ 689:
+/***/ 690:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePageModule", function() { return HomePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CurrencyPageModule", function() { return CurrencyPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(697);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__currency__ = __webpack_require__(698);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__ = __webpack_require__(157);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,31 +21,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var HomePageModule = /** @class */ (function () {
-    function HomePageModule() {
+
+var CurrencyPageModule = /** @class */ (function () {
+    function CurrencyPageModule() {
     }
-    HomePageModule = __decorate([
+    CurrencyPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
-            declarations: [__WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */]],
-            imports: [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */]), __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* ComponentsModule */]]
+            declarations: [__WEBPACK_IMPORTED_MODULE_2__currency__["a" /* CurrencyPage */]],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__currency__["a" /* CurrencyPage */]),
+                __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* ComponentsModule */],
+                __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__["b" /* TranslateModule */].forChild()
+            ]
         })
-    ], HomePageModule);
-    return HomePageModule;
+    ], CurrencyPageModule);
+    return CurrencyPageModule;
 }());
 
-//# sourceMappingURL=home.module.js.map
+//# sourceMappingURL=currency.module.js.map
 
 /***/ }),
 
-/***/ 697:
+/***/ 698:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CurrencyPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(87);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(158);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_providers__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_constant__ = __webpack_require__(88);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -92,114 +97,42 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-
-var HomePage = /** @class */ (function () {
-    function HomePage(coinProvider, loadingCtrl, toastCtrl, storage) {
-        this.coinProvider = coinProvider;
-        this.loadingCtrl = loadingCtrl;
-        this.toastCtrl = toastCtrl;
-        this.storage = storage;
-        this.coinList = [];
-        this.coinListFiltered = [];
-        this.loadCoin();
+var CurrencyPage = /** @class */ (function () {
+    function CurrencyPage(settingsProvider) {
+        this.settingsProvider = settingsProvider;
+        this.currencies = [];
+        this.init();
     }
-    HomePage.prototype.initLoading = function () {
-        this.loading = this.loadingCtrl.create({
-            content: 'Please wait...'
-        });
-    };
-    HomePage.prototype.loadCoin = function (refresher) {
+    CurrencyPage.prototype.init = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        this.initLoading();
-                        return [4 /*yield*/, this.loading.present()];
-                    case 1:
-                        _b.sent();
-                        _a = this;
-                        return [4 /*yield*/, this.coinProvider.getAllCoin()];
-                    case 2:
-                        _a.coinList = _b.sent();
-                        this.coinListFiltered = this.coinList;
-                        if (refresher)
-                            refresher.complete();
-                        this.loading.dismiss();
-                        return [2 /*return*/];
-                }
+            return __generator(this, function (_a) {
+                this.currencies = __WEBPACK_IMPORTED_MODULE_2__app_app_constant__["b" /* availableCurrency */];
+                return [2 /*return*/];
             });
         });
     };
-    HomePage.prototype.filterCoins = function (val) {
-        return function (coin) {
-            return (coin.name.toLowerCase().indexOf(val.toLowerCase()) > -1 ||
-                coin.symbol.toLowerCase().indexOf(val.toLowerCase()) > -1);
-        };
-    };
-    HomePage.prototype.onInputSearch = function (ev) {
-        if (this.coinList) {
-            this.coinListFiltered = this.coinList;
-            var val = ev.target.value;
-            if (val && val.trim() !== '') {
-                this.coinListFiltered = this.coinList.filter(this.filterCoins(val));
-            }
-        }
-    };
-    HomePage.prototype.addToFavourite = function (coin) {
+    CurrencyPage.prototype.changeCurrency = function (selectedCurrency) {
         return __awaiter(this, void 0, void 0, function () {
-            var favorites;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        favorites = [];
-                        return [4 /*yield*/, this.storage.get('myFavourite').then(function (res) {
-                                if (res == null) {
-                                    favorites = [];
-                                }
-                                else {
-                                    favorites = res;
-                                }
-                            })];
+                    case 0: return [4 /*yield*/, this.settingsProvider.setValue('currency', selectedCurrency)];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, favorites.push(coin)];
-                    case 2:
-                        _a.sent();
-                        return [4 /*yield*/, this.storage.set('myFavourite', this.removeDuplicates(favorites, 'id'))];
-                    case 3:
-                        _a.sent();
-                        this.presentToast();
                         return [2 /*return*/];
                 }
             });
         });
     };
-    HomePage.prototype.removeDuplicates = function (myArr, prop) {
-        return myArr.filter(function (obj, pos, arr) {
-            return arr.map(function (mapObj) { return mapObj[prop]; }).indexOf(obj[prop]) === pos;
-        });
-    };
-    HomePage.prototype.presentToast = function () {
-        var toast = this.toastCtrl.create({
-            message: 'coin was added successfully',
-            duration: 3000
-        });
-        toast.present();
-    };
-    HomePage = __decorate([
+    CurrencyPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/home/rabiul/ionic-cryptocurrency/src/pages/home/home.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Cryptocurrency</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <ion-searchbar [(ngModel)]="searchText" [showCancelButton]="shouldShowCancel" (ionInput)="onInputSearch($event)"\n                   (ionCancel)="onCancel($event)">\n    </ion-searchbar>\n    <ion-refresher (ionRefresh)="loadCoin($event)">\n        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"\n                               refreshingText="Refreshing...">\n        </ion-refresher-content>\n    </ion-refresher>\n\n    <ion-list [virtualScroll]="coinListFiltered">\n        <ion-grid class=\'coin-card\' *virtualItem="let coin">\n            <coin-card [coinData]=\'coin\' (click)="addToFavourite(coin)"></coin-card>\n        </ion-grid>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/rabiul/ionic-cryptocurrency/src/pages/home/home.html"*/
+            selector: 'page-currency',template:/*ion-inline-start:"/home/rabiul/ionic/ionic-cryptocurrency/src/pages/settings/currency/currency.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>{{ \'TITLE_CURRENCY\' | translate }}</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <list-settings [exec]="{fctToExectute:changeCurrency, thisParent: this, keyDB:\'currency\'}" [dataSetting]=\'currencies\'></list-settings>\n</ion-content>'/*ion-inline-end:"/home/rabiul/ionic/ionic-cryptocurrency/src/pages/settings/currency/currency.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CoinProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
-    ], HomePage);
-    return HomePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_providers__["c" /* SettingsProvider */]])
+    ], CurrencyPage);
+    return CurrencyPage;
 }());
 
-//# sourceMappingURL=home.js.map
+//# sourceMappingURL=currency.js.map
 
 /***/ })
 

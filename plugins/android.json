@@ -1,0 +1,33 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "io.jsnomad.cryptocurrency"
+    },
+    "ionic-plugin-keyboard": {
+      "PACKAGE_NAME": "io.jsnomad.cryptocurrency"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "io.jsnomad.cryptocurrency"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "io.jsnomad.cryptocurrency"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "io.jsnomad.cryptocurrency"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "io.jsnomad.cryptocurrency"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "io.jsnomad.cryptocurrency"
+    }
+  },
+  "dependent_plugins": {}
+}

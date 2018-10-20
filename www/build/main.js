@@ -93,33 +93,37 @@ webpackEmptyAsyncContext.id = 172;
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"../pages/converter/converter.module": [
+		702,
+		16
+	],
 	"../pages/crypto-news/crypto-news.module": [
 		687,
-		6
+		10
 	],
 	"../pages/favourite-coin/favourite-coin.module": [
 		688,
-		5
+		15
 	],
 	"../pages/home/home.module": [
 		689,
-		4
+		14
 	],
 	"../pages/settings/currency/currency.module": [
 		690,
-		3
+		13
 	],
 	"../pages/settings/language/language.module": [
 		691,
-		2
+		12
 	],
 	"../pages/settings/settings.module": [
 		692,
-		1
+		11
 	],
 	"../pages/upcoming-coin/upcoming-coin.module": [
 		693,
-		0
+		9
 	]
 };
 function webpackAsyncContext(req) {
@@ -236,7 +240,7 @@ var ComponentsModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(175);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(160);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(158);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(159);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ngx_translate_core__ = __webpack_require__(157);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ngx_translate_http_loader__ = __webpack_require__(366);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ionic_angular__ = __webpack_require__(86);
@@ -246,6 +250,7 @@ var ComponentsModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__helper_price_helper__ = __webpack_require__(162);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_providers__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_components_module__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_converter_converter__ = __webpack_require__(703);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -273,6 +278,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 /* SHARED MODULES */
 
+
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
 function createTranslateLoader(http) {
@@ -297,7 +303,7 @@ var AppModule = /** @class */ (function () {
     }
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
-            declarations: [__WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* CryptocurrencyApp */]],
+            declarations: [__WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* CryptocurrencyApp */], __WEBPACK_IMPORTED_MODULE_15__pages_converter_converter__["a" /* ConverterPage */]],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_14__components_components_module__["a" /* ComponentsModule */],
@@ -317,13 +323,14 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/settings/currency/currency.module#CurrencyPageModule', name: 'CurrencyPage', segment: 'currency', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/settings/language/language.module#LanguagePageModule', name: 'LanguagePage', segment: 'language', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/upcoming-coin/upcoming-coin.module#UpcomingCoinPageModule', name: 'UpcomingCoinPage', segment: 'upcoming-coin', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/upcoming-coin/upcoming-coin.module#UpcomingCoinPageModule', name: 'UpcomingCoinPage', segment: 'upcoming-coin', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/converter/converter.module#ConverterPageModule', name: 'ConverterPage', segment: 'converter', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["a" /* IonicStorageModule */].forRoot()
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_8_ionic_angular__["b" /* IonicApp */]],
-            entryComponents: [__WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* CryptocurrencyApp */]],
+            entryComponents: [__WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* CryptocurrencyApp */], __WEBPACK_IMPORTED_MODULE_15__pages_converter_converter__["a" /* ConverterPage */]],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_13__providers_providers__["a" /* Api */],
                 __WEBPACK_IMPORTED_MODULE_13__providers_providers__["b" /* CoinProvider */],
@@ -469,7 +476,7 @@ var CoinCardComponent = /** @class */ (function () {
     ], CoinCardComponent.prototype, "coinData", void 0);
     CoinCardComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'coin-card',template:/*ion-inline-start:"/home/rabiul/ionic-cryptocurrency/src/components/coin-card/coin-card.html"*/'<ion-row>\n  <ion-col col-2>\n    <img src="{{imageHelper.getCoinImage(coinData.symbol)}}" height="32" width="32">\n  </ion-col>\n  <ion-col col-6 class=\'vertical-center\'>\n    <div>\n      <span class=\'bold\'>{{ coinData.symbol }}</span> |\n      <span>{{ coinData.name }}</span>\n    </div>\n  </ion-col>\n  <ion-col col-4 class=\'vertical-center\'>\n    <span class=\'bold\'>{{ priceHelper.getPriceByCurrency(coinData) }} {{symbol}}</span>\n  </ion-col>\n</ion-row>\n<ion-row>\n  <ion-col col-4>\n    <span>1h: </span>\n    <span class=\'bold\' [ngClass]="getPriceColor(coinData.percent_change_1h)">{{ coinData.percent_change_1h }} %</span>\n  </ion-col>\n  <ion-col col-4>\n    <span>24h: </span>\n    <span class=\'bold\' [ngClass]="getPriceColor(coinData.percent_change_24h)">{{ coinData.percent_change_24h }} %</span>\n  </ion-col>\n  <ion-col col-4>\n    <span>7d: </span>\n    <span class=\'bold\' [ngClass]="getPriceColor(coinData.percent_change_7d)">{{ coinData.percent_change_7d }} %</span>\n  </ion-col>\n</ion-row>'/*ion-inline-end:"/home/rabiul/ionic-cryptocurrency/src/components/coin-card/coin-card.html"*/
+            selector: 'coin-card',template:/*ion-inline-start:"/home/rabiul/ionic/ionic-cryptocurrency/src/components/coin-card/coin-card.html"*/'<ion-row>\n  <ion-col col-2>\n    <img src="{{imageHelper.getCoinImage(coinData.symbol)}}" height="32" width="32">\n  </ion-col>\n  <ion-col col-6 class=\'vertical-center\'>\n    <div>\n      <span class=\'bold\'>{{ coinData.symbol }}</span> |\n      <span>{{ coinData.name }}</span>\n    </div>\n  </ion-col>\n  <ion-col col-4 class=\'vertical-center\'>\n    <span class=\'bold\'>{{ priceHelper.getPriceByCurrency(coinData) }} {{symbol}}</span>\n  </ion-col>\n</ion-row>\n<ion-row>\n  <ion-col col-4>\n    <span>1h: </span>\n    <span class=\'bold\' [ngClass]="getPriceColor(coinData.percent_change_1h)">{{ coinData.percent_change_1h }} %</span>\n  </ion-col>\n  <ion-col col-4>\n    <span>24h: </span>\n    <span class=\'bold\' [ngClass]="getPriceColor(coinData.percent_change_24h)">{{ coinData.percent_change_24h }} %</span>\n  </ion-col>\n  <ion-col col-4>\n    <span>7d: </span>\n    <span class=\'bold\' [ngClass]="getPriceColor(coinData.percent_change_7d)">{{ coinData.percent_change_7d }} %</span>\n  </ion-col>\n</ion-row>'/*ion-inline-end:"/home/rabiul/ionic/ionic-cryptocurrency/src/components/coin-card/coin-card.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__helper_image_helper__["a" /* ImageHelper */],
             __WEBPACK_IMPORTED_MODULE_2__helper_price_helper__["a" /* PriceHelper */],
@@ -609,7 +616,7 @@ var ListSettingsComponent = /** @class */ (function () {
     ], ListSettingsComponent.prototype, "dataSetting", null);
     ListSettingsComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'list-settings',template:/*ion-inline-start:"/home/rabiul/ionic-cryptocurrency/src/components/list-settings/list-settings.html"*/'<ion-list radio-group>\n  <ion-item *ngFor="let value of values">\n    <ion-label>{{value.name}}</ion-label>\n    <ion-radio (click)=\'save(value)\' [checked]="value.isChecked"></ion-radio>\n  </ion-item>\n</ion-list>'/*ion-inline-end:"/home/rabiul/ionic-cryptocurrency/src/components/list-settings/list-settings.html"*/
+            selector: 'list-settings',template:/*ion-inline-start:"/home/rabiul/ionic/ionic-cryptocurrency/src/components/list-settings/list-settings.html"*/'<ion-list radio-group>\n  <ion-item *ngFor="let value of values">\n    <ion-label>{{value.name}}</ion-label>\n    <ion-radio (click)=\'save(value)\' [checked]="value.isChecked"></ion-radio>\n  </ion-item>\n</ion-list>'/*ion-inline-end:"/home/rabiul/ionic/ionic-cryptocurrency/src/components/list-settings/list-settings.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_providers__["c" /* SettingsProvider */]])
     ], ListSettingsComponent);
@@ -766,22 +773,65 @@ var CryptocurrencyApp = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["g" /* Nav */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["g" /* Nav */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["g" /* Nav */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["g" /* Nav */]) === "function" && _a || Object)
     ], CryptocurrencyApp.prototype, "nav", void 0);
     CryptocurrencyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/rabiul/ionic-cryptocurrency/src/app/app.html"*/'<ion-menu [class]="selectedTheme" [content]="content">\n    <ion-header>\n        <ion-toolbar>\n            <ion-title>{{ \'MENU_TITLE\' | translate }}</ion-title>\n        </ion-toolbar>\n    </ion-header>\n    <ion-content>\n        <ion-list>\n            <button menuClose ion-item (click)="openPage(\'HomePage\')">\n                {{ \'MENU_HOME\' | translate }}\n            </button>\n            <button menuClose ion-item (click)="openPage(\'UpcomingCoinPage\')">\n                {{ \'UPCOMING_COIN\' | translate }}\n            </button>\n            <button menuClose ion-item (click)="openPage(\'CryptoNewsPage\')">\n                {{ \'CRYPTO_NEWS\' | translate }}\n            </button>\n            <button menuClose ion-item (click)="openPage(\'FavouriteCoinPage\')">\n                {{ \'FAVOURITE_COIN\' | translate }}\n            </button>\n            <button menuClose ion-item (click)="openPage(\'SettingsPage\')">\n                {{ \'MENU_SETTINGS\' | translate }}\n            </button>\n        </ion-list>\n    </ion-content>\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" [class]="selectedTheme" #content swipeBackEnabled="false"></ion-nav>\n'/*ion-inline-end:"/home/rabiul/ionic-cryptocurrency/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/rabiul/ionic/ionic-cryptocurrency/src/app/app.html"*/'<ion-menu [class]="selectedTheme" [content]="content">\n    <ion-header>\n        <ion-toolbar>\n            <ion-title>{{ \'MENU_TITLE\' | translate }}</ion-title>\n        </ion-toolbar>\n    </ion-header>\n    <ion-content>\n        <ion-list>\n            <button menuClose ion-item (click)="openPage(\'HomePage\')">\n                {{ \'MENU_HOME\' | translate }}\n            </button>\n            <button menuClose ion-item (click)="openPage(\'UpcomingCoinPage\')">\n                {{ \'UPCOMING_COIN\' | translate }}\n            </button>\n            <button menuClose ion-item (click)="openPage(\'CryptoNewsPage\')">\n                {{ \'CRYPTO_NEWS\' | translate }}\n            </button>\n            <button menuClose ion-item (click)="openPage(\'FavouriteCoinPage\')">\n                {{ \'FAVOURITE_COIN\' | translate }}\n            </button>\n            <button menuClose ion-item (click)="openPage(\'SettingsPage\')">\n                {{ \'MENU_SETTINGS\' | translate }}\n            </button>\n        </ion-list>\n    </ion-content>\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" [class]="selectedTheme" #content swipeBackEnabled="false"></ion-nav>\n'/*ion-inline-end:"/home/rabiul/ionic/ionic-cryptocurrency/src/app/app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */],
-            __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__["a" /* SplashScreen */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_settings_settings__["a" /* SettingsProvider */],
-            __WEBPACK_IMPORTED_MODULE_5__ngx_translate_core__["c" /* TranslateService */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* Config */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* Platform */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__providers_settings_settings__["a" /* SettingsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_settings_settings__["a" /* SettingsProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ngx_translate_core__["c" /* TranslateService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* Config */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* Config */]) === "function" && _g || Object])
     ], CryptocurrencyApp);
     return CryptocurrencyApp;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=app.component.js.map
+
+/***/ }),
+
+/***/ 703:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConverterPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(86);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the ConverterPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ConverterPage = /** @class */ (function () {
+    function ConverterPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        console.log(this.navParams.get('data'));
+    }
+    ConverterPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ConverterPage');
+    };
+    ConverterPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-converter',template:/*ion-inline-start:"/home/rabiul/ionic/ionic-cryptocurrency/src/pages/converter/converter.html"*/'<!--\n  Generated template for the ConverterPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>converter</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/home/rabiul/ionic/ionic-cryptocurrency/src/pages/converter/converter.html"*/,
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object])
+    ], ConverterPage);
+    return ConverterPage;
+    var _a, _b;
+}());
+
+//# sourceMappingURL=converter.js.map
 
 /***/ }),
 
@@ -855,7 +905,7 @@ var apiUrl = 'https://api.coinmarketcap.com/v1';
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__(387);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(158);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(159);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);

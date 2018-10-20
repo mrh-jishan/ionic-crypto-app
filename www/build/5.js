@@ -1,14 +1,15 @@
 webpackJsonp([5],{
 
-/***/ 688:
+/***/ 689:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FavouriteCoinPageModule", function() { return FavouriteCoinPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePageModule", function() { return HomePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__favourite_coin__ = __webpack_require__(696);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(697);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(350);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,37 +19,32 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var FavouriteCoinPageModule = /** @class */ (function () {
-    function FavouriteCoinPageModule() {
+
+var HomePageModule = /** @class */ (function () {
+    function HomePageModule() {
     }
-    FavouriteCoinPageModule = __decorate([
+    HomePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
-            declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__favourite_coin__["a" /* FavouriteCoinPage */],
-            ],
-            imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__favourite_coin__["a" /* FavouriteCoinPage */]),
-            ],
+            declarations: [__WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */]],
+            imports: [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */]), __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* ComponentsModule */]]
         })
-    ], FavouriteCoinPageModule);
-    return FavouriteCoinPageModule;
+    ], HomePageModule);
+    return HomePageModule;
 }());
 
-//# sourceMappingURL=favourite-coin.module.js.map
+//# sourceMappingURL=home.module.js.map
 
 /***/ }),
 
-/***/ 696:
+/***/ 697:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FavouriteCoinPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(87);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__helper_image_helper__ = __webpack_require__(161);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__helper_price_helper__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(159);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -97,47 +93,36 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-
-
-/**
- * Generated class for the FavouriteCoinPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var FavouriteCoinPage = /** @class */ (function () {
-    function FavouriteCoinPage(coinProvider, loadingCtrl, imageHelper, priceHelper, settingsProvider, toastCtrl, storage) {
+var HomePage = /** @class */ (function () {
+    function HomePage(coinProvider, loadingCtrl, toastCtrl, storage) {
         this.coinProvider = coinProvider;
         this.loadingCtrl = loadingCtrl;
-        this.imageHelper = imageHelper;
-        this.priceHelper = priceHelper;
-        this.settingsProvider = settingsProvider;
         this.toastCtrl = toastCtrl;
         this.storage = storage;
         this.coinList = [];
+        this.coinListFiltered = [];
         this.loadCoin();
-        this.getSymbol();
     }
-    FavouriteCoinPage.prototype.initLoading = function () {
+    HomePage.prototype.initLoading = function () {
         this.loading = this.loadingCtrl.create({
             content: 'Please wait...'
         });
     };
-    FavouriteCoinPage.prototype.loadCoin = function (refresher) {
+    HomePage.prototype.loadCoin = function (refresher) {
         return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
                     case 0:
                         this.initLoading();
                         return [4 /*yield*/, this.loading.present()];
                     case 1:
-                        _a.sent();
-                        return [4 /*yield*/, this.storage.get('myFavourite').then(function (res) {
-                                _this.coinList = res;
-                            })];
+                        _b.sent();
+                        _a = this;
+                        return [4 /*yield*/, this.coinProvider.getAllCoin()];
                     case 2:
-                        _a.sent();
+                        _a.coinList = _b.sent();
+                        this.coinListFiltered = this.coinList;
                         if (refresher)
                             refresher.complete();
                         this.loading.dismiss();
@@ -146,23 +131,22 @@ var FavouriteCoinPage = /** @class */ (function () {
             });
         });
     };
-    FavouriteCoinPage.prototype.getSymbol = function () {
-        var currency = this.settingsProvider.getCacheValue('currency');
-        this.symbol = currency.symbol;
+    HomePage.prototype.filterCoins = function (val) {
+        return function (coin) {
+            return (coin.name.toLowerCase().indexOf(val.toLowerCase()) > -1 ||
+                coin.symbol.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        };
     };
-    FavouriteCoinPage.prototype.getPriceColor = function (price) {
-        switch (Math.sign(price)) {
-            case 1:
-                return 'price-up';
-            case -1:
-                return 'price-down';
-            case 0:
-                return 'price-no-change';
-            default:
-                return 'price-no-change';
+    HomePage.prototype.onInputSearch = function (ev) {
+        if (this.coinList) {
+            this.coinListFiltered = this.coinList;
+            var val = ev.target.value;
+            if (val && val.trim() !== '') {
+                this.coinListFiltered = this.coinList.filter(this.filterCoins(val));
+            }
         }
     };
-    FavouriteCoinPage.prototype.removeFavourite = function (coin) {
+    HomePage.prototype.addToFavourite = function (coin) {
         return __awaiter(this, void 0, void 0, function () {
             var favorites;
             return __generator(this, function (_a) {
@@ -174,46 +158,48 @@ var FavouriteCoinPage = /** @class */ (function () {
                                     favorites = [];
                                 }
                                 else {
-                                    favorites = res.filter(function (element) {
-                                        return element.id !== coin.id;
-                                    });
+                                    favorites = res;
                                 }
                             })];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, this.storage.set('myFavourite', favorites)];
+                        return [4 /*yield*/, favorites.push(coin)];
                     case 2:
                         _a.sent();
-                        this.loadCoin();
+                        return [4 /*yield*/, this.storage.set('myFavourite', this.removeDuplicates(favorites, 'id'))];
+                    case 3:
+                        _a.sent();
                         this.presentToast();
                         return [2 /*return*/];
                 }
             });
         });
     };
-    FavouriteCoinPage.prototype.presentToast = function () {
+    HomePage.prototype.removeDuplicates = function (myArr, prop) {
+        return myArr.filter(function (obj, pos, arr) {
+            return arr.map(function (mapObj) { return mapObj[prop]; }).indexOf(obj[prop]) === pos;
+        });
+    };
+    HomePage.prototype.presentToast = function () {
         var toast = this.toastCtrl.create({
-            message: 'coin was removed successfully',
+            message: 'coin was added successfully',
             duration: 3000
         });
         toast.present();
     };
-    FavouriteCoinPage = __decorate([
+    HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-favourite-coin',template:/*ion-inline-start:"/home/rabiul/ionic-cryptocurrency/src/pages/favourite-coin/favourite-coin.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Favourite Coin</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <ion-refresher (ionRefresh)="loadCoin($event)">\n        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"\n                               refreshingText="Refreshing...">\n        </ion-refresher-content>\n    </ion-refresher>\n\n    <ion-list [virtualScroll]="coinList">\n        <ion-grid class=\'coin-card\' *virtualItem="let coinData" (click)="removeFavourite(coinData)">\n            <ion-row>\n                <ion-col col-2>\n                    <img src="{{imageHelper.getCoinImage(coinData.symbol)}}" height="32" width="32">\n                </ion-col>\n                <ion-col col-6 class=\'vertical-center\'>\n                    <div>\n                        <span class=\'bold\'>{{ coinData.symbol }}</span> |\n                        <span>{{ coinData.name }}</span>\n                    </div>\n                </ion-col>\n                <ion-col col-4 class=\'vertical-center\'>\n                    <span class=\'bold\'>{{ priceHelper.getPriceByCurrency(coinData) }} {{symbol}}</span>\n                </ion-col>\n            </ion-row>\n            <ion-row>\n                <ion-col col-4>\n                    <span>1h: </span>\n                    <span class=\'bold\' [ngClass]="getPriceColor(coinData.percent_change_1h)">{{ coinData.percent_change_1h }} %</span>\n                </ion-col>\n                <ion-col col-4>\n                    <span>24h: </span>\n                    <span class=\'bold\' [ngClass]="getPriceColor(coinData.percent_change_24h)">{{ coinData.percent_change_24h }} %</span>\n                </ion-col>\n                <ion-col col-4>\n                    <span>7d: </span>\n                    <span class=\'bold\' [ngClass]="getPriceColor(coinData.percent_change_7d)">{{ coinData.percent_change_7d }} %</span>\n                </ion-col>\n            </ion-row>\n\n        </ion-grid>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/rabiul/ionic-cryptocurrency/src/pages/favourite-coin/favourite-coin.html"*/,
+            selector: 'page-home',template:/*ion-inline-start:"/home/rabiul/ionic/ionic-cryptocurrency/src/pages/home/home.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Cryptocurrency</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <ion-searchbar [(ngModel)]="searchText" [showCancelButton]="shouldShowCancel" (ionInput)="onInputSearch($event)"\n                   (ionCancel)="onCancel($event)">\n    </ion-searchbar>\n    <ion-refresher (ionRefresh)="loadCoin($event)">\n        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"\n                               refreshingText="Refreshing...">\n        </ion-refresher-content>\n    </ion-refresher>\n\n    <ion-list [virtualScroll]="coinListFiltered">\n        <ion-grid class=\'coin-card\' *virtualItem="let coin">\n            <coin-card [coinData]=\'coin\' (click)="addToFavourite(coin)"></coin-card>\n        </ion-grid>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/rabiul/ionic/ionic-cryptocurrency/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* CoinProvider */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_4__helper_image_helper__["a" /* ImageHelper */],
-            __WEBPACK_IMPORTED_MODULE_5__helper_price_helper__["a" /* PriceHelper */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_providers__["c" /* SettingsProvider */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */],
             __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
-    ], FavouriteCoinPage);
-    return FavouriteCoinPage;
+    ], HomePage);
+    return HomePage;
 }());
 
-//# sourceMappingURL=favourite-coin.js.map
+//# sourceMappingURL=home.js.map
 
 /***/ })
 

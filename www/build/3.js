@@ -1,16 +1,18 @@
 webpackJsonp([3],{
 
-/***/ 690:
+/***/ 691:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CurrencyPageModule", function() { return CurrencyPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LanguagePageModule", function() { return LanguagePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__currency__ = __webpack_require__(698);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(350);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__language__ = __webpack_require__(699);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common_http__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_module__ = __webpack_require__(351);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_components_module__ = __webpack_require__(350);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -22,34 +24,43 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CurrencyPageModule = /** @class */ (function () {
-    function CurrencyPageModule() {
+
+
+var LanguagePageModule = /** @class */ (function () {
+    function LanguagePageModule() {
     }
-    CurrencyPageModule = __decorate([
+    LanguagePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
-            declarations: [__WEBPACK_IMPORTED_MODULE_2__currency__["a" /* CurrencyPage */]],
+            declarations: [__WEBPACK_IMPORTED_MODULE_2__language__["a" /* LanguagePage */]],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__currency__["a" /* CurrencyPage */]),
-                __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* ComponentsModule */],
-                __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__["b" /* TranslateModule */].forChild()
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__language__["a" /* LanguagePage */]),
+                __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["b" /* TranslateModule */].forChild({
+                    loader: {
+                        provide: __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["a" /* TranslateLoader */],
+                        useFactory: __WEBPACK_IMPORTED_MODULE_5__app_app_module__["b" /* createTranslateLoader */],
+                        deps: [__WEBPACK_IMPORTED_MODULE_4__angular_common_http__["a" /* HttpClient */]]
+                    }
+                }),
+                __WEBPACK_IMPORTED_MODULE_6__components_components_module__["a" /* ComponentsModule */]
             ]
         })
-    ], CurrencyPageModule);
-    return CurrencyPageModule;
+    ], LanguagePageModule);
+    return LanguagePageModule;
 }());
 
-//# sourceMappingURL=currency.module.js.map
+//# sourceMappingURL=language.module.js.map
 
 /***/ }),
 
-/***/ 698:
+/***/ 699:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CurrencyPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LanguagePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_providers__ = __webpack_require__(87);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_constant__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_constant__ = __webpack_require__(88);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -97,25 +108,29 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-var CurrencyPage = /** @class */ (function () {
-    function CurrencyPage(settingsProvider) {
+
+var LanguagePage = /** @class */ (function () {
+    function LanguagePage(settingsProvider, translate) {
         this.settingsProvider = settingsProvider;
-        this.currencies = [];
+        this.translate = translate;
+        this.languages = [];
         this.init();
     }
-    CurrencyPage.prototype.init = function () {
+    LanguagePage.prototype.init = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                this.currencies = __WEBPACK_IMPORTED_MODULE_2__app_app_constant__["b" /* availableCurrency */];
+                this.languages = __WEBPACK_IMPORTED_MODULE_3__app_app_constant__["c" /* availableLanguages */];
                 return [2 /*return*/];
             });
         });
     };
-    CurrencyPage.prototype.changeCurrency = function (selectedCurrency) {
+    LanguagePage.prototype.changeLanguage = function (selectedLanguage) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.settingsProvider.setValue('currency', selectedCurrency)];
+                    case 0:
+                        this.translate.use(selectedLanguage.code);
+                        return [4 /*yield*/, this.settingsProvider.setValue('language', selectedLanguage)];
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
@@ -123,16 +138,17 @@ var CurrencyPage = /** @class */ (function () {
             });
         });
     };
-    CurrencyPage = __decorate([
+    LanguagePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-currency',template:/*ion-inline-start:"/home/rabiul/ionic-cryptocurrency/src/pages/settings/currency/currency.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>{{ \'TITLE_CURRENCY\' | translate }}</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <list-settings [exec]="{fctToExectute:changeCurrency, thisParent: this, keyDB:\'currency\'}" [dataSetting]=\'currencies\'></list-settings>\n</ion-content>'/*ion-inline-end:"/home/rabiul/ionic-cryptocurrency/src/pages/settings/currency/currency.html"*/
+            selector: 'page-language',template:/*ion-inline-start:"/home/rabiul/ionic/ionic-cryptocurrency/src/pages/settings/language/language.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>{{ \'TITLE_LANGUAGE\' | translate }}</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <list-settings [exec]="{fctToExectute:changeLanguage, thisParent: this, keyDB:\'language\'}" [dataSetting]=\'languages\'></list-settings>\n</ion-content>'/*ion-inline-end:"/home/rabiul/ionic/ionic-cryptocurrency/src/pages/settings/language/language.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_providers__["c" /* SettingsProvider */]])
-    ], CurrencyPage);
-    return CurrencyPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_providers__["c" /* SettingsProvider */],
+            __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */]])
+    ], LanguagePage);
+    return LanguagePage;
 }());
 
-//# sourceMappingURL=currency.js.map
+//# sourceMappingURL=language.js.map
 
 /***/ })
 

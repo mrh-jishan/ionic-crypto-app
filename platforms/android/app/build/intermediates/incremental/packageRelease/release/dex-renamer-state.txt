@@ -1,0 +1,4 @@
+#Sat Sep 22 03:01:32 MYT 2018
+base.0=/home/rabiul/ionic-cryptocurrency/platforms/android/app/build/intermediates/transforms/dex/release/0
+renamed.0=classes.dex
+file.0=/home/rabiul/ionic-cryptocurrency/platforms/android/app/build/intermediates/transforms/dex/release/0/classes.dex

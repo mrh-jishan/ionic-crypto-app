@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
-import {IonicPage, LoadingController, ToastController} from 'ionic-angular';
+import {IonicPage, LoadingController, NavController, ToastController} from 'ionic-angular';
 import {CoinProvider, SettingsProvider} from "../../providers/providers";
 import {Storage} from "@ionic/storage";
 import {ImageHelper} from "../../helper/image.helper";
 import {PriceHelper} from "../../helper/price.helper";
+import {ConverterPage} from "../converter/converter";
 
 /**
  * Generated class for the FavouriteCoinPage page.
@@ -23,14 +24,14 @@ export class FavouriteCoinPage {
     private loading: any;
     private symbol: string;
 
-    constructor(
-        private coinProvider: CoinProvider,
-        private loadingCtrl: LoadingController,
-        private imageHelper: ImageHelper,
-        private priceHelper: PriceHelper,
-        private settingsProvider: SettingsProvider,
-        public toastCtrl: ToastController,
-        public storage: Storage) {
+    constructor(private coinProvider: CoinProvider,
+                private loadingCtrl: LoadingController,
+                private imageHelper: ImageHelper,
+                private navCtrl: NavController,
+                private priceHelper: PriceHelper,
+                private settingsProvider: SettingsProvider,
+                public toastCtrl: ToastController,
+                public storage: Storage) {
         this.loadCoin();
         this.getSymbol();
     }
@@ -70,7 +71,6 @@ export class FavouriteCoinPage {
         }
     }
 
-
     async removeFavourite(coin) {
         var favorites = [];
         await this.storage.get('myFavourite').then(res => {
@@ -95,5 +95,9 @@ export class FavouriteCoinPage {
             duration: 3000
         });
         toast.present();
+    }
+
+    GoConvert(coin) {
+        this.navCtrl.push(ConverterPage, {data: coin});
     }
 }
